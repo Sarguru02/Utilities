@@ -8,7 +8,7 @@ function Navbar() {
       <div className="flex justify-between items-center">
         <span className="text-2xl font-[Roboto] cursor-pointer">
           <img src="logo.svg" className="h-10 inline" />
-          Sargurunathan
+          TaskTime
           <Digital />
         </span>
         <span className="text-3xl cursor-pointer mx-2 md:hidden block ">
