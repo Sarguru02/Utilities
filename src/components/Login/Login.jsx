@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { emailValidator, passwordValidator } from "./regexValidator";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [input, setInput] = useState({ email: "", password: "" });
   const [errmsg, setErrmsg] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInput({
@@ -19,6 +21,7 @@ function Login() {
       return setErrmsg(
         "Password should have at least 8 characters with combination of lowercase, uppercase and special characters"
       );
+    navigate("/calculator");
   };
 
   return (
