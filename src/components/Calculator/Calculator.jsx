@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import DigitButton from "./DigitButtons";
 import OperationButton from "./OperationButtons";
 import "./Calculator.css";
+import { useNavigate } from "react-router-dom";
 
 export const ACTIONS = {
   ADD_DIGIT: "add-digit",
@@ -129,6 +130,11 @@ const Calculator = () => {
     reducer,
     {}
   );
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("auth")) navigate("/");
+  });
 
   return (
     <div className="calculator-container">

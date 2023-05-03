@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./Clock.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Clock() {
   const currDate = new Date();
   const [sec, setSec] = useState(currDate.getSeconds() / 60);
   const [min, setMin] = useState(currDate.getMinutes() / 60);
   const [hr, setHr] = useState(currDate.getHours() / 12);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("auth")) navigate("/");
+  });
 
   useEffect(() => {
     let bla = setInterval(() => {

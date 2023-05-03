@@ -9,13 +9,14 @@ import Home from "./components/Home/Home";
 const App = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/clock" element={<Clock />} />
-      </Routes>
+      </Routes> */}
+      <Home />
     </>
   );
 };

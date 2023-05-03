@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { emailValidator, passwordValidator } from "./regexValidator";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,10 @@ function Login() {
   const [input, setInput] = useState({ email: "", password: "" });
   const [errmsg, setErrmsg] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("auth") === true) navigate("/calculator");
+  });
 
   const handleChange = (e) => {
     setInput({
@@ -21,13 +25,14 @@ function Login() {
       return setErrmsg(
         "Password should have at least 8 characters with combination of lowercase, uppercase and special characters"
       );
+    localStorage.setItem("auth", true);
     navigate("/calculator");
   };
 
   return (
     <div className="flex items-center justify-center h-screen bg-img bg-cover">
       <form onSubmit={submitter}>
-        <div className="bg-white/50 w-96 p-6 rounded shadow-sm">
+        <div className="bg-white/50 w-96 p-6 rounded-md shadow-sm">
           <label htmlFor="mailid" className="text-gray-700">
             Email
           </label>

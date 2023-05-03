@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Digital from "../Digital/Digital";
 
 function Navbar() {
+  const logout = () => {
+    localStorage.removeItem("auth");
+  };
   return (
     <nav className="p-3 bg-sky-500 shadow md:flex md:items-center md:justify-between absolute w-screen">
       <div className="flex justify-between items-center">
@@ -51,6 +54,17 @@ function Navbar() {
             About Me
           </a>
         </li>
+
+        {localStorage.getItem("auth") && (
+          <li className="mx-4 my-6 md:my-0" onClick={logout}>
+            <Link
+              to="/"
+              className="text-xl text-white hover:text-gray-700 duration-500"
+            >
+              Logout
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
