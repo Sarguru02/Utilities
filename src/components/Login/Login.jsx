@@ -42,6 +42,7 @@ function Login() {
             type="password"
             name="password"
             className="w-full py-2 bg-gray-200 text-gray-500 px-1 outline-none mb-4"
+            onChange={handleChange}
             id="pwd"
           />
           {errmsg.length > 0 && (

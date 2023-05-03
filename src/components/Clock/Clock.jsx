@@ -26,7 +26,7 @@ export default function Clock() {
         <div
           className="hand hour"
           style={{
-            transform: `translateX(-50%) rotate(${sec + min + hr * 360}deg)`,
+            transform: `translateX(-50%) rotate(${hr * 360 + min * 30}deg)`,
           }}
         ></div>
         <div
