@@ -43,6 +43,14 @@ function Navbar() {
             Todo List
           </Link>
         </li>
+        <li className="mx-4 my-6 md:my-0">
+          <a
+            href="https://sarguru.netlify.app/"
+            className="text-xl text-white hover:text-gray-700 duration-500"
+          >
+            About Me
+          </a>
+        </li>
       </ul>
     </nav>
   );

@@ -32,7 +32,7 @@ function Login() {
             Email
           </label>
           <input
-            className="w-full py-2 bg-gray-200 text-gray-500 px-1 outline-none mb-4"
+            className="w-full py-2 bg-sky-200 text-gray-500 px-1 outline-none mb-4"
             type="text"
             id="mailid"
             name="email"
@@ -44,7 +44,7 @@ function Login() {
           <input
             type="password"
             name="password"
-            className="w-full py-2 bg-gray-200 text-gray-500 px-1 outline-none mb-4"
+            className="w-full py-2 bg-sky-200 text-gray-500 px-1 outline-none mb-4"
             onChange={handleChange}
             id="pwd"
           />
