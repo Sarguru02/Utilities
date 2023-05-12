@@ -1,5 +1,5 @@
 import React from "react";
-import Clock from "./components/Clock/Clock";
+// import Clock from "./components/Clock/Clock";
 import Calculator from "./components/Calculator/Calculator";
 import Todo from "./components/Todo/Todo";
 import { Route, Routes } from "react-router-dom";
@@ -17,7 +17,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/todo" element={<Todo />} />
           <Route path="/calculator" element={<Calculator />} />
-          <Route path="/clock" element={<Clock />} />
+          {/* <Route path="/clock" element={<Clock />} /> */}
         </Routes>
       </AuthProvider>
     </>

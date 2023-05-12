@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Digital from "../Digital/Digital";
 import { useAuth } from "../../contexts/AuthContext";
@@ -6,6 +6,16 @@ import { useAuth } from "../../contexts/AuthContext";
 function Navbar() {
   const { currentUser, out } = useAuth();
   const navigate = useNavigate();
+  const menu = (e) => {
+    let list = document.querySelector("ul");
+    e.name === "menu"
+      ? ((e.name = "close"),
+        list.classList.add("top-[80px]"),
+        list.classList.add("opacity-100"))
+      : ((e.name = "menu"),
+        list.classList.remove("top-[80px]"),
+        list.classList.remove("opacity-100"));
+  };
   const logout = async () => {
     try {
       await out();
@@ -23,7 +33,19 @@ function Navbar() {
           <Digital />
         </span>
         <span className="text-3xl cursor-pointer mx-2 md:hidden block ">
-          <ion-icon name="menu"></ion-icon>
+          <ion-icon
+            name="menu"
+            onclick={(e) => {
+              let list = document.querySelector("ul");
+              e.name === "menu"
+                ? ((e.name = "close"),
+                  list.classList.add("top-[80px]"),
+                  list.classList.add("opacity-100"))
+                : ((e.name = "menu"),
+                  list.classList.remove("top-[80px]"),
+                  list.classList.remove("opacity-100"));
+            }}
+          ></ion-icon>
         </span>
       </div>
 
@@ -39,7 +61,7 @@ function Navbar() {
           </li>
         )}
 
-        {currentUser && (
+        {/* {currentUser && (
           <li className="mx-4 my-6 md:my-0">
             <Link
               to="/clock"
@@ -48,7 +70,7 @@ function Navbar() {
               Clock
             </Link>
           </li>
-        )}
+        )} */}
 
         {currentUser && (
           <li className="mx-4 my-6 md:my-0">
