@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Signup/Signup";
 import { AuthProvider } from "./contexts/AuthContext";
 import Home from "./components/Home/Home";
+import Test from "./Test";
 const App = () => {
   return (
     <>
@@ -19,8 +20,9 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/todo" element={<Todo />} />
           <Route path="/calculator" element={<Calculator />} />
-          {/* <Route path="/clock" element={<Clock />} /> */}
+          <Route path="/clock" element={<Clock />} />
         </Routes>
+        {/* <Test /> */}
       </AuthProvider>
     </>
   );
