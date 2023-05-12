@@ -53,6 +53,16 @@ function Navbar() {
         {currentUser && (
           <li className="mx-4 my-6 md:my-0">
             <Link
+              to="/home"
+              className="text-xl text-white hover:text-gray-700 duration-500"
+            >
+              Home
+            </Link>
+          </li>
+        )}
+        {currentUser && (
+          <li className="mx-4 my-6 md:my-0">
+            <Link
               to="/calculator"
               className="text-xl text-white hover:text-gray-700 duration-500"
             >

@@ -52,7 +52,7 @@ export default function Todo() {
     <div className="total-todo-container">
       <div className="Todo-Container">
         <NewTodoForm onSubmit={addTodo} />
-        <h1 className="header">Todo List</h1>
+        <h1 className="header text-6xl pt-[70px]">Todo List</h1>
         <TodoList
           todos={todos}
           toggleTodo={toggleTodo}

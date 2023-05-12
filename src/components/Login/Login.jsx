@@ -32,7 +32,7 @@ function Login() {
       setErrmsg("");
       setLoading(true);
       await login(input.email, input.password);
-      navigate("/calculator");
+      navigate("/home");
     } catch {
       setErrmsg("Failed to login");
     }

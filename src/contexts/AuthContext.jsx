@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
     if (!currentUser) navigate("/");
   }
   function innerCheck() {
-    if (currentUser) navigate("/calculator");
+    if (currentUser) navigate("/home");
   }
   function signinmsg() {
     return currentUser && <p>Signed in as {currentUser.email}</p>;
