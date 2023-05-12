@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./Clock.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Clock() {
   const currDate = new Date();
+  const { entryCheck } = useAuth();
   const [sec, setSec] = useState(currDate.getSeconds() / 60);
   const [min, setMin] = useState(currDate.getMinutes() / 60);
   const [hr, setHr] = useState(currDate.getHours() / 12);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("auth")) navigate("/");
+    entryCheck();
   });
 
   useEffect(() => {

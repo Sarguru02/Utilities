@@ -5,18 +5,21 @@ import Todo from "./components/Todo/Todo";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/Home/Home";
+import Signup from "./components/Signup/Signup";
+import { AuthProvider } from "./contexts/AuthContext";
 const App = () => {
   return (
     <>
-      {/* <Navbar />
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/todo" element={<Todo />} />
-        <Route path="/calculator" element={<Calculator />} />
-        <Route path="/clock" element={<Clock />} />
-      </Routes> */}
-      <Home />
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/clock" element={<Clock />} />
+        </Routes>
+      </AuthProvider>
     </>
   );
 };

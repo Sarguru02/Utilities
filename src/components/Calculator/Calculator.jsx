@@ -3,6 +3,8 @@ import DigitButton from "./DigitButtons";
 import OperationButton from "./OperationButtons";
 import "./Calculator.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import { useState } from "react";
 
 export const ACTIONS = {
   ADD_DIGIT: "add-digit",
@@ -131,9 +133,11 @@ const Calculator = () => {
     {}
   );
 
+  const [errmsg, setErrmsg] = useState("");
+  const { entryCheck } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!localStorage.getItem("auth")) navigate("/");
+    entryCheck();
   });
 
   return (

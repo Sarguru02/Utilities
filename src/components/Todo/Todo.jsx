@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { NewTodoForm } from "./NewTodoForm";
 import "./Todo.css";
 import { TodoList } from "./TodoList";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Todo() {
   const [todos, setTodos] = useState(() => {
@@ -11,11 +11,10 @@ export default function Todo() {
 
     return JSON.parse(localValue);
   });
-
-  const navigate = useNavigate();
+  const { entryCheck } = useAuth();
 
   useEffect(() => {
-    if (!localStorage.getItem("auth")) navigate("/");
+    entryCheck();
   });
 
   useEffect(() => {
