@@ -4,7 +4,8 @@
   background: #333;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 10%;
+  font-size: 1.2rem;
 }
 .Todo-Container {
   color: hsl(200, 100%, 90%);

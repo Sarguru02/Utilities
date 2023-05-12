@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Digital from "../Digital/Digital";
 import { useAuth } from "../../contexts/AuthContext";
@@ -29,7 +29,7 @@ function Navbar() {
       <div className="flex justify-between items-center">
         <span className="text-2xl font-[Roboto] cursor-pointer">
           <img src="logo.svg" className="h-10 inline" />
-          TaskTime
+          TaskTimer
           <Digital />
         </span>
         <span className="text-3xl cursor-pointer mx-2 md:hidden block ">
@@ -49,7 +49,7 @@ function Navbar() {
         </span>
       </div>
 
-      <ul className="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-sky-500 w-full left-0 md:w-auto md:py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+      <ul className="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-sky-500 w-full left-0 md:w-auto md:py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-200">
         {currentUser && (
           <li className="mx-4 my-6 md:my-0">
             <Link
