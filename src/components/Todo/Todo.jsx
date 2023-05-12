@@ -18,6 +18,7 @@ import { database } from "../../../firebase";
 export default function Todo() {
   const [todos, setTodos] = useState([]);
   const { entryCheck, currentUser } = useAuth();
+  console.log(currentUser);
 
   useEffect(() => {
     entryCheck();
