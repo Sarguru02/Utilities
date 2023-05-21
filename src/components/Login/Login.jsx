@@ -52,6 +52,7 @@ function Login() {
             id="mailid"
             name="email"
             onChange={handleChange}
+            autoComplete="off"
           />
           <label htmlFor="pwd" className="text-gray-700">
             Password
