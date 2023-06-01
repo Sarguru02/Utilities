@@ -1,12 +1,6 @@
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
-import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 const AuthContext = React.createContext();
 
@@ -18,17 +12,37 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+
+  async function signup(email, password) {
+    const response = await Axios.post("http://localhost:6969/register", {
+      username: email,
+      password: password,
+    });
+
+    if (response.data.isLogged) {
+      setCurrentUser(response.data);
+      return navigate("/home");
+    } else {
+      throw response.data.status;
+    }
   }
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password).then(
-      (user_new) => {
-        setCurrentUser(user_new);
-      }
-    );
+
+  async function login(email, password) {
+    const response = await Axios.post("http://localhost:6969/login", {
+      username: email,
+      password: password,
+    });
+    setLoading(false);
+
+    if (response.data.isLogged) {
+      setCurrentUser(response.data);
+      return navigate("/home");
+    } else {
+      throw response.data.status;
+    }
   }
-  function out() {
+
+  function logout() {
     setCurrentUser();
     return signOut(auth);
   }
@@ -36,25 +50,18 @@ export function AuthProvider({ children }) {
     if (!currentUser) navigate("/");
   }
   function innerCheck() {
+    console.log(currentUser);
     if (currentUser) navigate("/home");
   }
   function signinmsg() {
     return currentUser && <p>Signed in as {currentUser.email}</p>;
   }
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-
-    return unsubscribe();
-  }, []);
 
   const value = {
     currentUser,
     signup,
     login,
-    out,
+    logout,
     entryCheck,
     innerCheck,
     signinmsg,

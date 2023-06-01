@@ -3,17 +3,6 @@ import { NewTodoForm } from "./NewTodoForm";
 import "./Todo.css";
 import { TodoList } from "./TodoList";
 import { useAuth } from "../../contexts/AuthContext";
-import {
-  collection,
-  onSnapshot,
-  query,
-  updateDoc,
-  doc,
-  addDoc,
-  setDoc,
-  deleteDoc,
-} from "firebase/firestore";
-import { database } from "../../../firebase";
 
 export default function Todo() {
   const [todos, setTodos] = useState([]);
@@ -22,21 +11,11 @@ export default function Todo() {
 
   useEffect(() => {
     entryCheck();
+
+    return () => unsubscribe();
   });
 
-  useEffect(() => {
-    const q = query(
-      collection(database, "todos", currentUser.email, "userTodo")
-    );
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      let todosArr = [];
-      snapshot.forEach((doc) => {
-        todosArr.push({ ...doc.data(), id: doc.id });
-      });
-      setTodos(todosArr);
-    });
-    return () => unsubscribe();
-  }, []);
+  useEffect(() => {}, []);
   async function addTodo(data) {
     await setDoc(
       doc(

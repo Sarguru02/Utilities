@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 function Home() {
+  const { entryCheck } = useAuth();
+  useEffect(() => {
+    entryCheck();
+  });
   return (
     <div className="bg-new w-screen h-screen bg-cover flex flex-col justify-center items-center font-bold ">
       <span className="text-9xl text-sky-300">Welcome !</span>
