@@ -70,7 +70,7 @@ function Signup() {
             onChange={handleChange}
             id="confirm"
           />
-          {errmsg.length > 0 && (
+          {errmsg && errmsg.length > 0 && (
             <div className="text-red-600 my-5 text-center">{errmsg}</div>
           )}
           <button

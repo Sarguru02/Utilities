@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   async function signup(email, password) {
-    const response = await Axios.post("http://localhost:6969/register", {
+    const response = await Axios.post("http://localhost:6969/signup", {
       username: email,
       password: password,
     });
@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
     const response = await Axios.post("http://localhost:6969/login", {
       username: email,
       password: password,
-    });
+    },{withCredentials:true});
     setLoading(false);
 
     if (response.data.isLogged) {
@@ -50,7 +50,6 @@ export function AuthProvider({ children }) {
     if (!currentUser) navigate("/");
   }
   function innerCheck() {
-    console.log(currentUser);
     if (currentUser) navigate("/home");
   }
   function signinmsg() {

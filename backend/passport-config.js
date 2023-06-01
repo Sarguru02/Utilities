@@ -5,7 +5,7 @@ const User = require("./database");
 function initializePassport(passport) {
   const authenticateUser = async (usernameform, password, done) => {
     const user = await User.findOne({ username: usernameform });
-    if (user === null) {
+    if (!user) {
       return done(null, false, { message: "no user with that email" });
     }
 
